@@ -1,44 +1,33 @@
 #!/usr/bin/env python
-from pathlib import Path
+import os
 
 from setuptools import setup, find_packages
 
 
 if __name__ == "__main__":
 
-    base_dir = Path(__file__).parent
-    src_dir = base_dir / 'src'
+    base_dir = os.path.dirname(__file__)
+    src_dir = os.path.join(base_dir, "src")
 
     about = {}
-    with (src_dir / "special_package" / "__about__.py").open() as f:
+    with open(os.path.join(src_dir, "studious-succotash", "__about__.py")) as f:
         exec(f.read(), about)
 
-    #with (base_dir / "README.rst").open() as f:
+    #with open(os.path.join(base_dir, "README.rst")) as f:
     #    long_description = f.read()
 
     install_requirements = [
 
     ]
 
-    interactive_requirements = [
-
-    ]
-
-    test_requirements = [
-
-    ]
-
-    doc_requirements = [
-
-    ]
 
     setup(
         name=about['__title__'],
         version=about['__version__'],
 
         description=about['__summary__'],
-        long_description=long_description,
-        license=about['__license__'],
+        #long_description=long_description,
+        #license=about['__license__'],
         url=about["__uri__"],
 
         author=about["__author__"],
@@ -46,18 +35,13 @@ if __name__ == "__main__":
 
         package_dir={'': 'src'},
         packages=find_packages(where='src'),
-        
         include_package_data=True,
 
         install_requires=install_requirements,
-        tests_require=test_requirements,
         extras_require={
-            'docs': doc_requirements,
-            'test': test_requirements,
-            'interactive': interactive_requirements,
-            'dev': doc_requirements + test_requirements + interactive_requirements,
+            #'data': data_requires,
         },
 
-
         zip_safe=False,
+
     )
