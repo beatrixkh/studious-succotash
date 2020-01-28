@@ -10,14 +10,14 @@ if __name__ == "__main__":
     src_dir = os.path.join(base_dir, "src")
 
     about = {}
-    with open(os.path.join(src_dir, "studious-succotash", "__about__.py")) as f:
+    with open(os.path.join(src_dir, "studious_succotash", "__about__.py")) as f:
         exec(f.read(), about)
 
     #with open(os.path.join(base_dir, "README.rst")) as f:
     #    long_description = f.read()
 
     install_requirements = [
-
+        'pytest'
     ]
 
 
